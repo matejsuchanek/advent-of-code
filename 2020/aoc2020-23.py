@@ -1,3 +1,6 @@
+import os
+
+
 class Cup:
     def __init__(self, label):
         self.label = label
@@ -52,7 +55,9 @@ def init(labels, cups):
     return first
 
 
-input_ = input()
+with open(os.path.join('data', 'aoc23.txt')) as file:
+    input_ = next(file).rstrip()
+
 cups = {}
 first = init([int(c) for c in input_], cups)
 run(first, cups, 100)

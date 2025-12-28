@@ -1,16 +1,15 @@
 import os
-from pprint import pprint
 
 rocks = set()
 cubes = set()
 rows = cols = 0
 
 with open(os.path.join('data', 'aoc14.txt'), 'r') as file:
-    for r, line in enumerate(file):
+    for r, line in enumerate(map(str.rstrip, file)):
         rows += 1
-        cols = len(line.rstrip())
+        cols = len(line)
 
-        for c, x in enumerate(line.rstrip()):
+        for c, x in enumerate(line):
             if x == '#':
                 cubes.add((r, c))
             elif x == 'O':

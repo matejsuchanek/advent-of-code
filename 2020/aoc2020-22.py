@@ -40,8 +40,6 @@ def score(deck):
 
 
 def new_game(deck1, deck2):
-    #game = counter
-
     configs = set()
     while deck1 and deck2:
         config = (','.join(map(str, deck1)), ','.join(map(str, deck2)))

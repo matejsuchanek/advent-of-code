@@ -4,7 +4,7 @@ turns = {y: x for x, y in enumerate(init)}
 last = init[-1]
 del turns[last]
 
-for t in range(len(turns), 30000000-1):  # 2020-1
+for t in range(len(turns), 30_000_000-1):  # 2020-1
     if last not in turns:
         turns[last] = t
         last = 0

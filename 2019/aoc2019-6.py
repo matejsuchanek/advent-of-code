@@ -1,22 +1,25 @@
-from collections import deque
+import os
+from collections import defaultdict, deque
 
-chain = {}
-graph = {}
 
 def get_orbits(of):
     orbs = count = 0
-    for p in chain.get(of, []):
+    for p in chain[of]:
         o, c = get_orbits(p)
         orbs += o + c
         count += c + 1
     return orbs, count
 
+
+chain = defaultdict(list)
+graph = defaultdict(list)
+
 with open(os.path.join('data', 'aoc6.txt')) as file:
     for line in file:
         l, r = line.strip().split(')')
-        chain.setdefault(l, []).append(r)
-        graph.setdefault(l, []).append(r)
-        graph.setdefault(r, []).append(l)
+        chain[l].append(r)
+        graph[l].append(r)
+        graph[r].append(l)
 
 print(sum(get_orbits('COM')))
 
@@ -29,7 +32,7 @@ dist = {start: 0}
 while queue:
     node = queue.popleft()
     d = dist[node] + 1
-    for n in graph.get(node, []):
+    for n in graph[node]:
         if n not in dist:
             dist[n] = d
             if n == end:

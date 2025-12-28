@@ -1,7 +1,6 @@
 import math
 import os
 from collections import Counter
-from pprint import pprint
 
 
 def get_border(rows, which):
